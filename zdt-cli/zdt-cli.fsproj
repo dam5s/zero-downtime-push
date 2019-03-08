@@ -6,7 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Update="FSharp.Core" Version="4.6.2" />
+
+    <Compile Include="Cli/Action.fs" />
+    <Compile Include="Cli/Push.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
-
 </Project>

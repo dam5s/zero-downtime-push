@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <RootNamespace>zdt_cli_test</RootNamespace>
+
+    <IsPackable>false</IsPackable>
+    <GenerateProgramFile>false</GenerateProgramFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../zdt-cli/zdt-cli.fsproj" />
+
+    <PackageReference Update="FSharp.Core" Version="4.6.2" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1" />
+    <PackageReference Include="fsunit" Version="3.4.0" />
+    <PackageReference Include="fsunit.xunit" Version="3.4.0" />
+
+    <Compile Include="CliTests/ActionTests.fs" />
+    <Compile Include="CliTests/PushTests.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+</Project>
