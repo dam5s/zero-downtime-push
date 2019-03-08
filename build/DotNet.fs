@@ -1,6 +1,7 @@
 module DotNet
 
 open Fake.DotNet
+open Architectures
 
 
 let private dotnet (command : string) (args : string) =
@@ -20,5 +21,8 @@ let test project _ =
 let run project _ =
     dotnet "run" (sprintf "-p %s" project)
 
-let release project _ =
-    dotnet "publish" (sprintf "%s -c Release" project)
+let release project (arch : Architecture) _ =
+    arch
+    |> dotNetFlag
+    |> sprintf "%s -c Release -r %s" project
+    |> dotnet "publish"
