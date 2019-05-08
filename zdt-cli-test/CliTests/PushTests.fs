@@ -26,7 +26,7 @@ let ``Running successful push`` () =
     result |> shouldEqual (Ok ())
     out |> shouldEqual [ "cf rename my-app my-app-venerable"
                          "cf push my-app -f my-manifest.yml"
-                         "cf delete my-app-venerable"
+                         "cf delete -f my-app-venerable"
                        ]
 
 
@@ -48,6 +48,7 @@ let ``Failing during push`` () =
     result |> shouldEqual (Error "Push error")
     out |> shouldEqual [ "cf rename my-app my-app-venerable"
                          "cf push my-app -f my-manifest.yml"
-                         "cf delete my-app"
+                         "cf logs my-app --recent"
+                         "cf delete -f my-app"
                          "cf rename my-app-venerable my-app"
                        ]

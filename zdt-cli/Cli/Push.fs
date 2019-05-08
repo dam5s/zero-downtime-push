@@ -13,10 +13,11 @@ let push (cf : string list -> Result<unit, string>) (appName : string) (args : s
         }
         { Forward = fun _ -> cf <| List.append ["push" ; appName ] args
           Rollback = fun _ ->
-            cf [ "delete" ; appName ] |> ignore
+            cf [ "logs" ; appName ; "--recent" ] |> ignore
+            cf [ "delete" ; "-f" ; appName ] |> ignore
             cf [ "rename" ; venerableAppName ; appName ] |> ignore
         }
-        { Forward = fun _ -> cf [ "delete" ; venerableAppName ]
+        { Forward = fun _ -> cf [ "delete" ; "-f" ; venerableAppName ]
           Rollback = id
         }
     ]
