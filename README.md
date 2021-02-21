@@ -7,7 +7,7 @@ There is no warranty whatsoever, use at your own risks.
 
 ## Development dependencies
 
- * Install [.NET core 2.2](https://dotnet.github.io/)
+ * Install [.NET 5](https://dotnet.github.io/)
  * Install [Warp Packer](https://github.com/dgiagio/warp)
 
 ## Building on Unix based systems
