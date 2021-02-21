@@ -15,7 +15,7 @@ let private warpPack cmdArgs =
     |> Support.ensureSuccessExitCode
 
 
-let private pack (arch : Architecture) =
+let private pack (arch: Architecture) =
     let dotNetFlag = dotNetFlag arch
     let warpFlag = warpFlag arch
 

@@ -4,7 +4,7 @@ open Fake.DotNet
 open Architectures
 
 
-let private dotnet (command : string) (args : string) =
+let private dotnet (command: string) (args: string) =
     let result = DotNet.exec id command args
     Support.ensureSuccessExitCode result.ExitCode
 
@@ -21,7 +21,7 @@ let test project _ =
 let run project _ =
     dotnet "run" (sprintf "-p %s" project)
 
-let release project (arch : Architecture) _ =
+let release project (arch: Architecture) _ =
     arch
     |> dotNetFlag
     |> sprintf "%s -c Release -r %s" project

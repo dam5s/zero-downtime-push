@@ -13,9 +13,9 @@ let private cmd args =
 
 [<Fact>]
 let ``Running successful push`` () =
-    let mutable out : string list = []
+    let mutable out: string list = []
 
-    let cf (args : string list) : Result<unit, string> =
+    let cf (args: string list): Result<unit, string> =
         out <- List.append out [ cmd args ]
         Ok ()
 
@@ -32,9 +32,9 @@ let ``Running successful push`` () =
 
 [<Fact>]
 let ``Failing during push`` () =
-    let mutable out : string list = []
+    let mutable out: string list = []
 
-    let cf (args : string list) : Result<unit, string> =
+    let cf (args: string list): Result<unit, string> =
         out <- List.append out [ cmd args ]
 
         match List.head args with

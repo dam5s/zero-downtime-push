@@ -3,7 +3,7 @@
 open Cli.Push
 
 
-let private cf (args : string list) : Result<unit, string> =
+let private cf (args: string list): Result<unit, string> =
     try
         use p = new System.Diagnostics.Process()
         p.StartInfo.FileName <- "cf"
@@ -18,7 +18,7 @@ let private cf (args : string list) : Result<unit, string> =
         else Error "cf CLI exited with an error"
     with
     | ex ->
-        Error <| sprintf "There was an exception running cf: %s" ex.Message
+        Error $"There was an exception running cf: %s{ex.Message}"
 
 
 [<EntryPoint>]
@@ -32,7 +32,7 @@ let main argv =
 
     match result with
     | Error message ->
-        eprintfn "\nERROR - %s" message
+        eprintfn $"\nERROR - %s{message}"
         1
     | Ok _ ->
         printfn "\nSUCCESS"
