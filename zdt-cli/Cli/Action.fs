@@ -31,17 +31,16 @@ let private runAction (state: RunAllState) (action: Action): RunAllState =
           Result = newResult
         }
 
+let private runWhileSuccessful state action =
+    match state.Result with
+    | Ok _ -> runAction state action
+    | Error _ -> state
+
+
 [<RequireQualifiedAccess>]
 module Action =
     let runAll (actions: Action list): Result<unit, string> =
         let finalState =
-            List.fold
-                (fun (state: RunAllState) (action: Action) ->
-                    match state.Result with
-                    | Ok _ -> runAction state action
-                    | Error _ -> state
-                )
-                initState
-                actions
+            (initState, actions) ||> List.fold runWhileSuccessful
 
         finalState.Result
